@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #containerload{
+            margin: 0;
+            padding: 0;
+            width: 98.45vw;
+            height: 98vh;
+            background-color: rgba(0, 0, 0, 0.578);
+            display: flex;
+            justify-content: center ;
+            align-items: center;
+        }
+        #scrollContainer img{
+            animation-name: loader;
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes loader{
+            0%{
+                transform: rotateX(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+
+
+        }
+
+    </style>
+</head>
+<body>
+    <div id="loaderConatiner">
+        <div id="containerload">
+            <div id="scrollContainer">
+                <img src="netflixLoader.png" alt="" width="120">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

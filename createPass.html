@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            justify-content: space-between;
+        }
+        #signIn{
+            text-decoration: none;
+            margin-right: 50px;
+            margin-top: 30px;
+            font-size: 25px;
+            color: black;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+        }
+        #Content{
+            width: 70vw;
+            height: 60vh;
+            border: 2px solid black;
+
+        }
+        #containerAll{
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+        }
+        #Content h2{
+            font-size: 40px;
+            display: grid;
+            justify-content: center;
+            margin-top:50px;
+        }
+        #Content p{
+            display: grid;
+            justify-content: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        #inputs{
+            text-align: center;
+            /* position: relative; */
+        }
+        #inputContainer{
+                display: flex;
+                flex-direction: column;
+        }
+        #inputContainer input{
+            width: 350px;
+            height: 40px;
+            padding-left: 20px;
+            font-size: 15px;
+            margin-left: 22vw;
+            margin-bottom: 20px;
+            border-radius: 2px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        #button button{
+            width: 25.3vw;
+            margin-right: 1vw;
+            height: 6vh;
+            border: none;
+            background-color: red;
+            color: white;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            /* font-weight:lighter; */
+            letter-spacing: 8px;
+            cursor: pointer;
+        }
+        #containerload{
+        position: absolute;
+        top: 0;
+        z-index: 10;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.578);
+            display: flex;
+            justify-content: center ;
+            align-items: center;
+        }
+        #scrollContainer img{
+            animation-name: loader;
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes loader{
+            0%{
+                transform: rotateX(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+
+
+        }
+        #loaderConatiner{
+            display: none;
+        }
+        #signIn{
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <img src="netflixLOGO.png" alt="" width="150">
+        <a id="signIn">SIGN IN</a>
+    </div>
+    <div id="containerAll">
+        <div id="Content">
+            <h2>Create a password to Start</h2>
+            <p>Just a few more steps and you're done ! </p>
+            <p>We hate paperwork, too.</p>
+            <div id="inputs"> 
+                <form action="" onsubmit="nextPage(event)">
+                    <div id="inputContainer">
+                        <input type="email" placeholder="Enter The Email id" required>
+                        <input type="password" placeholder="Add a password" required>
+                    </div>
+                    <div id="button">
+                        <button>NEXT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="loaderConatiner">
+        <div id="containerload">
+            <div id="scrollContainer">
+                <img src="netflixLoader.png" alt="" width="120">
+            </div>
+        </div>
+    </div>
+    <script>
+        function nextPage(event){
+            event.preventDefault()
+            
+            let next = document.querySelector('#loaderConatiner')
+            next.style.display = "block";
+
+            setTimeout(() =>{
+                window.location.href = "netflixWatching.html"
+                next.style.display = "none";
+            },3000)
+        }
+        let signinPage = document.getElementById('signIn');
+        signinPage.addEventListener('click',()=>{
+            let next = document.querySelector('#loaderConatiner')
+            next.style.display = "block";
+
+            setTimeout(() =>{
+                window.location.href = "netflixLogin.html"
+                next.style.display = "none";
+            },3000)
+        })
+    </script>
+
+
+</body>
+</html>

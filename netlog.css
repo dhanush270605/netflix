@@ -1,0 +1,155 @@
+body{
+    background-image: url(netflixbackground.jpg);
+    background-size:cover;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.box{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* margin-top: 20vh; */
+}
+.boxContainer{
+    padding-left: 30px; 
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 37vw;
+    background-color: rgba(0, 0, 0, 0.74);
+
+}
+#Sign{
+    margin-top: 9%;
+    display: flex;
+    justify-content:center;
+    text-shadow: 0px 0px 10px  red;
+    /* margin-left: 50px; */
+}
+.inputBox {
+    display: grid;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 5%;
+}
+.inputBox input{
+    width: 25vw;
+    height: 4.5vh;
+    font-size: 1em;
+    padding-right: 30px;
+    margin-top: 20px;
+    background-color: transparent;
+    transition: 0.5s;
+    color: rgb(255, 255, 255);
+    letter-spacing: 0.09em;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.3em;
+    border: none;
+    z-index: 10;
+    outline: none;
+    cursor: pointer;
+}
+form .inputBox span{
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 70px;
+    transition: 0.7s;
+}
+
+.box form .inputBox input:focus ~ span,
+.box form .inputBox input:valid ~ span{
+    transform: translateY(-34px);
+    font-size: 0.8em;
+}
+
+.box form .inputBox i{
+    position: absolute;
+    /* margin-left: 60px;
+    margin-top: 50px; */
+    background-color: white;
+    overflow: hidden;
+    width: 26.5vw;
+    height: 2px;
+    transition: 0.5s;
+    /* margin-bottom: 30px; */
+    left: 0;
+    bottom: 0;
+    margin-left: 50px;
+}
+.box form .inputBox input:focus ~ i,
+.box form .inputBox input:valid ~ i{
+    height: 35px;
+    border-radius: 2px;
+    background-color: rgba(50, 50, 50, 0.432);
+    box-shadow: 0px 0px 5px .5px white;
+}
+
+.button1{
+    margin-top: 50px;
+    display: flex;
+}
+.button1 button{
+    width: 72%;
+    height: 40px;
+    margin-left: 50px;
+    background-color: rgb(255, 0, 0);
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.forget{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.forget a{
+    text-decoration: none;
+    color: white;
+}
+.remember{
+    cursor: pointer;
+    padding-left: 50px;
+    margin-top: 20px;
+
+}
+.showPassword{
+    margin-left: 50px;
+}
+.signUp{
+    cursor: pointer;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.signUp a{
+    color: white;
+    text-decoration: none;
+}
+.signUp a span{
+    font-weight:800;
+    margin-left: 4px;
+    margin-bottom: 100px;
+    line-height: 200%;
+}
+.footer{
+    display: grid;
+    justify-content: center;
+    width: 70%;
+    line-height: 1.8;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+button:hover{
+    filter: grayscale(20%);
+    transform: scale(103%);
+}

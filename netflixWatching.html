@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(29, 29, 29);
+        }
+        #whoseTitle{
+            color: rgba(255, 255, 255, 0.806);
+            display: flex;
+            justify-content: center;
+            margin-top: 22vh;
+            font-size: 50px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #selector{
+            width: 38vw;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(4,1fr);
+        }
+        #selectorContainer{
+            display: flex;
+            justify-content: center;
+        }
+        img:hover{
+            transform: scale(115%);
+            cursor: pointer;
+        }
+        #manage{
+            display: flex;
+            justify-content: center;
+            margin-top: 10vh;
+        }
+        #manage button{
+            width: 12vw;
+            height: 04.5vh;
+            background-color: transparent;
+            border: 1px solid gray;
+            color: rgba(139, 139, 139, 0.735);
+            border-radius: 2px;
+            cursor:pointer;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 16px;
+        }
+        #containerload{
+        position: absolute;
+        top: 0;
+        z-index: 10;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.578);
+            display: flex;
+            justify-content: center ;
+            align-items: center;
+        }
+        #scrollContainer img{
+            animation-name: loader;
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes loader{
+            0%{
+                transform: rotateX(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+
+
+        }
+        #loaderConatiner{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="whoseTitle">
+        <p>Who's Watching ?</p>
+    </div>
+    <div id="selectorContainer">
+        <div id="selector">
+            <img src="whos1.png" alt="Whose 1" width="100">
+            <img src="whos2.png" alt="Whose 1" width="100">
+            <img src="whose3.png" alt="Whose 1" width="100">
+            <img src="whose4.png" alt="Whose 1" width="100">
+        </div>
+    </div>
+    <div id="manage">
+        <button>Manage Profile</button>
+    </div>
+    <div id="loaderConatiner">
+        <div id="containerload">
+            <div id="scrollContainer">
+                <img src="netflixLoader.png" alt="" width="120">
+            </div>
+        </div>
+    </div>
+    <script>
+        let image = document.querySelectorAll('img')
+        image.forEach(img =>{
+            img.addEventListener('click',() =>{
+            let next = document.querySelector('#loaderConatiner')
+            next.style.display = "block";
+
+            setTimeout(() =>{
+                window.location.href = "frontpage.html"
+                next.style.display = "none";
+            },3000)
+        })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            background-color: rgb(23, 23, 23);
+        }
+        #topMaterials {
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            width: 100vw;
+        }
+        img{
+            border-radius: 5px;
+            transition: 1s ease-in-out;
+        }
+        img:hover{
+            transform: scale(105%);
+            border-radius: 5px;
+        }
+        #topContainer {
+            display: flex;
+            width: 100vw;
+            background-color: rgb(0, 0, 0);
+            transition: background-color 0.3s ease;
+        }
+        #topContainer.transparent {
+            background-color: transparent;
+            box-shadow: none;
+        }
+        #topContainer div img {
+            margin-left: 2vw;
+        }
+        #topContainer .topButtons {
+            margin-left: 2vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #topContainer .topButtons button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+        #topContainer .topButtons button:hover {
+            transform: scale(106%);
+            text-shadow: 0px 1px red;
+        }
+        #searchIcon {
+            color: white;
+            display: flex;
+            align-items: center;
+            margin-left: 33vw;
+        }
+        select {
+            background-color: transparent;
+            border: none;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
+        #searchIcon div, #searchIcon i {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        #searchIcon div:hover, #searchIcon i:hover {
+            transform: scale(115%);
+        }
+        #coverImage {
+            margin-top: 60px;
+            filter: grayscale(10%);
+        }
+        #playContain {
+            position: absolute;
+            bottom: 0;
+            margin-bottom: 250px;
+            margin-left: 50px;
+        }
+        #PlayBox {
+            width: 120px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 45px;
+            border-radius: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            margin-left: 20px;
+            transition: 1s ease-in-out;
+        }
+        #PlayBox i {
+            font-size: 23px;
+        }
+        #PlayBox span {
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        #PlayBox:hover, #InfoBox:hover {
+            transform: scale(105%);
+            background-color: rgba(240, 248, 255, 0.797);
+            cursor: pointer;
+        }
+        #PlayBox:active, #InfoBox:active {
+            background-color: black;
+            color: white;
+        }
+        #mostWatch{
+            text-shadow: 2px 2px black;
+        }
+        #InfoBox {
+            width: 150px;
+            background-color: rgba(126, 126, 126, 0.493);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 45px;
+            border-radius: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            margin-left: 155px;
+            position: relative;
+            color: white;
+            bottom: 44px;
+            transition: 1s ease-in-out;
+        }   
+        #InfoBox i {
+            font-size: 23px;
+        }
+        #InfoBox span {
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        #mostContent {
+            color: white;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-shadow: 2px 2px rgba(0, 0, 0, 0.731);
+        }
+        #plas {
+            position: relative;
+            top: 50px;
+            left: 60px;
+        }
+        .downScrolling {
+            margin-top: 20px;
+        }
+        .downScrolling h2 {
+            color: white;
+            margin-left: 30px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .imageContainer {
+            display: flex;
+            width: 99vw;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .imageWrapper {
+            display: flex;
+            gap: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .imageWrapper img {
+            width: 250px;
+            flex-shrink: 0;
+        }
+        .scrollRight, .scrollLeft {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .scrollRight {
+            right: 0;
+        }
+        .scrollLeft {
+            left: 0;
+        }
+        .scrollRight:hover, .scrollLeft:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        #downScrolling1{
+            position: absolute;
+            top: 0;
+            transform: translateY(270%);
+        }
+        #downScrolling2,#downScrolling3,#downScrolling4{
+            position: relative;
+            top: 70px;
+        }
+        #footerIcons{
+            margin-top: 120px;
+            /* margin-left: 100px; */
+            margin-left: 100px;
+            display: grid;
+            /* gap: 20px; */
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+            color: white;
+            font-size: 25px;
+            z-index: 2;
+        }
+        #footerIcons i:hover{
+            cursor: pointer;
+            transform: scale(120%);
+            background-color: white;
+            color: black;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 45%;
+        }
+        #footerInfo{
+            color: rgba(255, 255, 255, 0.662);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            justify-content: center;
+            margin-left: 100px;
+            margin-top: 20px;
+            font-family:Arial, Helvetica, sans-serif;
+
+        }
+        #footerInfo p:hover{
+            text-decoration: underline;
+            cursor: pointer;
+            
+        }
+        #Service{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.662);
+            margin-left: 100px;
+            width: 100px;
+            height: 30px;
+            border: 1px solid white;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        #Copyrights{
+            color: rgba(255, 255, 255, 0.662);
+            margin-left: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="topMaterials">
+        <div id="topContainer">
+            <div><img src="netflixLOGO.png" alt="" width="100"></div>
+            <div class="topButtons">
+                <button title="Home">Home</button>
+                <button title="Tv Shows">Tv Shows</button>
+                <button title="Movies">Movies</button>
+                <button title="New And Popular">New & Popular</button>
+                <button title="My List">My List</button>
+                <button title="Browse by Language">Browse by Languages</button>
+            </div>
+            <div id="searchIcon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <div><p>Children</p></div>
+                <i class="fa-regular fa-bell"></i>
+                <div><img src="whose4.png" alt="" width="30"></div>
+                <select></select>
+            </div>
+        </div>
+    </div>
+    <div id="coverImage">
+        <img src="moneyHeist.png" alt="" width="1500">
+        <div id="playContain">
+            <div id="plas">
+                <div id="PlayBox" title="play"><i class="fa-solid fa-play"></i> <span>Play</span></div>
+                <div id="InfoBox" title="More Information"><i class="fa-solid fa-circle-info"></i> <span>More Info</span></div>
+            </div>
+            <div id="mostContent"><p>Most Watched Series On NETFLIX!</p></div>
+        </div>
+    </div>
+    <div class="downScrolling" id="downScrolling1" title="Select Movie">
+        <h2 id="mostWatch">Most Watched on NETFLIX</h2>
+        <div class="imageContainer">
+            <button class="scrollLeft" title="left Scroll"><i class="fa-solid fa-chevron-left" title="left Scroll"></i></button>
+            <div class="imageWrapper" id="imageWrapper1">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+            </div>
+            <button class="scrollRight" title="Right Scroll"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </div>
+    <div class="downScrolling" id="downScrolling2" title="Select Movie">
+        <h2>Trending Now >></h2>
+        <div class="imageContainer">
+            <button class="scrollLeft" title="left Scroll"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="imageWrapper" id="imageWrapper2">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+            </div>
+            <button class="scrollRight" title="Right Scroll"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </div>
+    <div class="downScrolling" id="downScrolling3" title="Select Movie">
+        <h2>Top Picks for You >></h2>
+        <div class="imageContainer">
+            <button class="scrollLeft" title="left Scroll"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="imageWrapper" id="imageWrapper3">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+            </div>
+            <button class="scrollRight" title="Right Scroll"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </div>
+    <div class="downScrolling" id="downScrolling4" title="Select Movie">
+        <h2>New Releases >> </h2>
+        <div class="imageContainer">
+            <button class="scrollLeft" title="left Scroll"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="imageWrapper" id="imageWrapper4" >
+                <img src="i1.png" alt="Inception" width="250" >
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+                <img src="i1.png" alt="Inception" width="250">
+            </div>
+            <button class="scrollRight" title="Right Scroll"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </div>
+    <div>
+        <div id="footerIcons"><i class="fa-brands fa-facebook-f" title="Facebook"></i>
+            <i class="fa-brands fa-instagram" title="Instagram"></i>
+            <i class="fa-brands fa-twitter" title="Twitter"></i>
+            <i class="fa-brands fa-youtube" title="You Tube"></i>
+        </div>
+        <div id="footerInfo">
+            <p>Auto Description</p>
+            <p>Help Center</p>
+            <p>Gift Card</p>
+            <p>Media Center</p>
+            <p>Incestor Relations</p>
+            <p>Jobs</p>
+            <p>Terms of Use</p>
+            <p>privacy</p>
+            <p>legal Notice</p>
+            <p>Cookie Preference</p>
+            <p>Corporate Information</p>
+            <p>Contact us</p>
+        </div>
+        <div id="Service">
+            <p>Service Code</p>
+        </div>
+        <div id="Copyrights">
+            <p>&COPY; 2024 VIT STUDENTS Vellore</p>
+        </div>
+        
+    </div>
+
+    <script>
+        function setupScrolling(scrollRightBtn, scrollLeftBtn, imageWrapperId) {
+            let currentScroll = 0;
+            const imageContainer = scrollRightBtn.parentElement;
+            const imageWrapper = document.getElementById(imageWrapperId);
+            const imageWidth = 250; 
+
+            scrollRightBtn.addEventListener('click', () => {
+                const maxScroll = imageWrapper.scrollWidth - imageContainer.clientWidth;
+                currentScroll = Math.min(currentScroll + imageWidth, maxScroll);
+                imageWrapper.style.transform = `translateX(-${currentScroll}px)`;
+            });
+
+            scrollLeftBtn.addEventListener('click', () => {
+                currentScroll = Math.max(currentScroll - imageWidth, 0);
+                imageWrapper.style.transform = `translateX(-${currentScroll}px)`;
+            });
+        }
+
+        setupScrolling(document.querySelector('#downScrolling1 .scrollRight'), document.querySelector('#downScrolling1 .scrollLeft'), 'imageWrapper1');
+        setupScrolling(document.querySelector('#downScrolling2 .scrollRight'), document.querySelector('#downScrolling2 .scrollLeft'), 'imageWrapper2');
+        setupScrolling(document.querySelector('#downScrolling3 .scrollRight'), document.querySelector('#downScrolling3 .scrollLeft'), 'imageWrapper3');
+        setupScrolling(document.querySelector('#downScrolling4 .scrollRight'), document.querySelector('#downScrolling4 .scrollLeft'), 'imageWrapper4');
+
+        // window.addEventListener('scroll', function() {
+        //     let topContainer = document.getElementById('topContainer');
+        //     if (window.scrollY > 100) {
+        //         topContainer.classList.remove('transparent');
+        //     } else {
+        //         topContainer.classList.add('transparent');
+        //     }
+        // });
+    </script>
+</body>
+</html>
